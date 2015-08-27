@@ -14,6 +14,8 @@ import nengo_gui
 
 logging.basicConfig(filename='example.log',level=logging.DEBUG)
 
+# each function should get the same driver...
+
 @pytest.fixture(scope="module")
 def gui(request):
     #Launches the Nengo GUI server for the test.

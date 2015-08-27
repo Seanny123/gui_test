@@ -1,5 +1,12 @@
 from selenium.webdriver import ActionChains
 
+# test the basic attributes of the components
+
+# test browser resizing
+
+# conbine the labels and movement into a for-loop
+nengo_object_list = ["ens", "node", "net"]
+
 def test_pageload(driver):
     # assert "localhost" in driver.page_source
     assert "nengo.js" in driver.page_source
@@ -14,7 +21,10 @@ def test_node_movement(driver):
     actions = ActionChains(driver)
     nodes = driver.find_elements_by_class_name("node")
     for node in nodes:
-        actions.drag_and_drop_by_offset(node, xoffset=5, yoffset=5).perform()
+        prev_location = node.location
+        actions.drag_and_drop_by_offset(node, xoffset=6, yoffset=5).perform()
+        assert prev_location['x'] - node.location['x'] == 6
+        assert prev_location['y'] - node.location['y'] == 5
 
 def test_node_slider(driver):
     actions = ActionChains(driver)

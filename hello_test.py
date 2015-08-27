@@ -14,7 +14,7 @@ gui = None
 def do_gui():
     logging.info("Launching nengo_gui (port=%d)", port)
     #print("Launching nengo_gui (port=%d)", port)
-    gui = nengo_gui.GUI(model_path)
+    gui = nengo_gui.GUI(model_path, interactive=False)
     try:
         gui.start(port=port, browser=False)
     except:
